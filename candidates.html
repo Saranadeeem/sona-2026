@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SONA 2026 - Candidates</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c4c6d;
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: white;
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+
+        .logo-icon {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 35px solid #d4a574;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            padding: 0 1.5rem;
+            border-right: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-links li:last-child {
+            border-right: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d4a574;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('assets/group 2.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+
+        .hero h1 {
+            font-family: Arial, sans-serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            color: white;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Vote Section */
+        .vote-section {
+            background-color: #F3DBB1;
+            padding: 4rem 2rem;
+        }
+
+        .vote-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .vote-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+        }
+
+        .vote-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .vote-text .highlight {
+            font-weight: 600;
+        }
+
+        .learn-more-btn {
+            background-color: #FEA002;
+            color: #000;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1.5rem;
+        }
+
+        .learn-more-btn:hover {
+            background-color: #e59002;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(254, 160, 2, 0.3);
+        }
+
+        .vote-image {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .vote-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Bio Section */
+        .bio-section {
+            background-color: #F3DBB1;
+            padding: 4rem 2rem;
+        }
+
+        .bio-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .bio-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .bio-image {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .bio-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .bio-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-top: 1rem;
+        }
+
+        .bio-header h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            margin-top: 0.5rem;
+        }
+
+        .bio-text {
+            color: #333;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .bio-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-text h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .see-supporters-btn {
+            background-color: #FEA002;
+            color: #000;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 2rem;
+            display: inline-block;
+        }
+
+        .see-supporters-btn:hover {
+            background-color: #e59002;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(254, 160, 2, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #88ABA2;
+            padding: 1.5rem 2rem;
+            text-align: left;
+        }
+
+        .footer p {
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #1a1a1a;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .vote-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .vote-text h2,
+            .bio-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .footer {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+             <img src="assets/logo.png" alt="SONA Logo" class="logo-icon" />
+                    <span>SONA 2026</span>
+        </div>
+               <ul class="nav-links">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="candidates.html">Candidates</a></li>
+  <li><a href="issues.html">Issues</a></li>
+  <li><a href="contact.html">Contact</a></li>
+</ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>RIGHT VISION, RIGHT TEAM, RIGHT CHOICE</h1>
+            <h2>SONA 2026 Campaign</h2>
+            <p>Join us in building a stronger future with leadership you can trust. Together, we move forward.</p>
+        </div>
+    </section>
+
+    <!-- Vote for the RIGHT TEAM Section -->
+    <section class="vote-section">
+        <div class="vote-content">
+            <div class="vote-text">
+                <h2>Vote for the RIGHT TEAM</h2>
+                <p>It is imperative that you vote for the complete slate to enable a unified leadership to execute a common vision for SONA.</p>
+                <p>If you agree with the <span class="highlight">RIGHT</span> vision, and want that to be implement with speed, efficiency and effectiveness, you MUST vote for the <span class="highlight">RIGHT TEAM</span> as a complete slate.</p>
+                <button class="learn-more-btn">Learn More</button>
+            </div>
+            <div class="vote-image">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=400&fit=crop" alt="Team Meeting">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sarbuland Sadiq Bio -->
+    <section class="bio-section">
+        <div class="bio-content">
+            <div class="bio-header">
+                <div class="bio-image">
+                    <img src="assets/sarbuland sadiqi 3.jpg" alt="Sarbuland Sadiq">
+                </div>
+                <section id="sarbuland-sadiq" class="candidate-bio"></section>
+                <h2>Sarbuland Sadiq</h2>
+                <h3>President</h3>
+            </div>
+
+            <div class="bio-text">
+                <p>I am from the 22nd Entry (70th GDP). After leaving PAF Academy Resalpur on medical grounds, I relocated with my parents to Pennsylvania, USA. I completed a degree in Electrical Engineering, followed by a Master's in Finance. I began my professional career with Bank of Illinois and later worked across both public and private sectors, including a role as an Acquisition Program Manager with the 8th largest accounting firm in the United States. That experience gave me the confidence to apply large-scale acquisition and turnaround principles at a smaller, more hands-on level. I founded a company in Minneapolis, Minnesota focused on acquiring distressed small businesses, restoring them to profitability, and exiting responsibly. Since then, I have bought, rebuilt, operated, and sold over half a dozen businesses across the U.S. and Europe, often running multiple companies simultaneously. While assisting a friend in Norway, I acquired a struggling business, successfully turned it around, and sold it. Most recently, I acquired Norwegian Bakeri (NorBak) when it was facing bankruptcy. Last year, it was recognized in business news as one of the top-performing companies in its sector—proof that disciplined governance and execution work, regardless of geography.</p>
+
+                <h4>My Involvement with SONA</h4>
+                <p>I joined SONA shortly before the 2023 elections, motivated by a desire to contribute meaningfully. I volunteered my time and was elected Treasurer.</p>
+                
+                <p>One of the first principles in turning around any distressed organization—whether a business or a nonprofit—is to reduce or eliminate the influence of those whose decisions led it into decline. Unfortunately, many of the same individuals who held significant influence prior to 2023 continued to do so afterward.</p>
+                
+                <p>It should therefore come as no surprise that SONA today remains in much the same condition, despite elections and title changes, when the underlying centers of influence have not meaningfully changed.</p>
+
+                <h4>A Commitment to Renewal</h4>
+                <p>In every business I have rebuilt, a critical part of success has been training and mentoring new leadership to ensure continuity beyond my involvement. Accordingly, I pledge that I will not seek office again after the completion of my term. My responsibility is not to hold on to a title, but to prepare the next generation to take over SONA's operations competently and independently.</p>
+
+                <button class="see-supporters-btn">See Our Supporters</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Masood Habib Khan Bio -->
+    <section class="bio-section">
+        <div class="bio-content">
+            <div class="bio-header">
+                <div class="bio-image">
+                    <img src="assets/masood habbib.jpg" alt="Masood Habib Khan">
+                </div>
+                <section id="nasser-akhtar" class="candidate-bio"></section>
+                <h2>Masood Habib Khan</h2>
+                <h3>Treasurer</h3>
+            </div>
+
+            <div class="bio-text">
+                <p>Hi, I'm Masood Habib, a proud alumnus of the 22nd Pre Cadet and 70th GDP. I'm thrilled to announce that I'm running for Treasurer on SONA. Rather than diving into my professional background, let me give you a brief overview of my journey. After leaving Sargodha, I attended the Merchant Marine Academy, I sailed for four years and eventually passed my second mate exam. Following another year at sea, I got married and decided to leave my sailing days behind. I then moved to the USA for further studies and started working at Key Bank to support myself financially. My professional experience primarily lies in infrastructure and security, with various roles in both domains. I'm excited about the prospect of making a meaningful impact in Pakistan and USA. Stay tuned for my vision, which I'll be sharing soon.</p>
+
+                <button class="see-supporters-btn">See Our Supporters</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- M. Nasser Akhtar Bio -->
+    <section class="bio-section">
+        <div class="bio-content">
+            <div class="bio-header">
+                <div class="bio-image">
+                    <img src="assets/nasser akhtar.jpg" alt="M. Nasser Akhtar">
+                </div>
+                <section id="masood-h-khan" class="candidate-bio"></section>
+                <h2>M. Nasser Akhtar</h2>
+                <h3>Introducing Mohammed "Nasser" Akhtar 83rd GD(P), Alauddin</h3>
+            </div>
+
+            <div class="bio-text">
+                <p>Squadron I am married and a father of three. My family has lived in Washington, D.C. and its suburbs for more than four decades. After receiving my release from PAF, I returned to the U.S. to attend to family affairs and have remained in the area since. My parents are buried here, and both my wife and I have all our family in the region.</p>
+
+                <h4>Academic Background</h4>
+                <p>I hold a B.Sc. (Aero Sciences), BS EE/CS, BBA (Finance), MS EE, and an MBA. I attended IBA Karachi during my disposal period awaiting release from the Academy, and later continued my studies at George Washington University and the Massachusetts Institute of Technology (MIT).</p>
+
+                <h4>Professional Background</h4>
+                <p>I started working early, even selling encyclopedias while in grade school. My first business venture was in Pakistan's Agritech sector, while I was at IBA, in collaboration with an Australian company. That opportunity also took me to Australia for several months of training. During my studies in the U.S., I held various roles in tech-related industries and eventually joined a Fortune 50 private satellite company, in their product development department. I later started a network integration business as a contractor for the company I worked for and grew it globally across ten countries, with four offices in Pakistan with Regional HQs in Dubai, London and Singapore. Over time, I expanded into multiple technology areas and have been involved in founding over 30 companies, privately and with venture funding.</p>
+
+                <p>Today, I am primarily focused on technology startups alongside my voluntary and non-profit work.</p>
+
+                <h4>Non-Profit & Community Work</h4>
+                <p>After winning a global World Bank-funded competition on ICT for Development, I established the Pakistan Gateway Foundation about 25 years ago using grant support from the World Bank and the Gateway Foundation. The initiative focused on introducing technological innovation to reduce transaction costs for e-commerce in developing countries and to educate the public sector on use of technology for good governance. The solution was adopted by the ITU, and I presented it on behalf of Pakistan at the ITU in Geneva for implementation in African countries. I was also appointed as the Plenipotentiary Ambassador of the Gateway Foundation, Washington D.C.</p>
+
+                <p>Since then, my volunteer work has expanded into education and vocational training, from teaching basic reading skills to supporting vocational programs, including collaborations with the UN and other multilateral organizations.</p>
+
+                <p>Closer to home, besides taking out the trash and shoveling snow for neighbors, I've been part of the neighborhood watch for three decades. I've started, led and served in parent organizations in my children's schools, served as a room parent, PTA President, and currently chair the DEI Committee on the County Council and also serve on the Career and Technical Education (CTE) Advisory Committee at the School Board level. I also serve as a Board Member of the County Council of PTAs representing parents of nearly 200,000 students.</p>
+
+                <p>My current focus is creating jobs through vocational training for those without college degrees, because I believe that's where we can make the greatest impact, both here in the U.S. and in countries with large youth populations, like Pakistan.</p>
+
+                <h4>Why SONA?</h4>
+                <p>A dear friend and entry mate, Arif Hasan, invited me to join the Alauddin Group, where I met Sir Sohail Shafi. Through Sir Shafi, I was introduced to SONA.</p>
+
+                <p>My initial focus was to help revamp technology and support Sir Sohail Raza in refreshing the portal, Sargodhian.com. One thing led to another, and I eventually found myself advocating for structural reforms at SONA, which ended up being controversial.</p>
+
+                <p>All my closest associates are Sargodhians, and we've remained in constant touch for 43 years. Every day, I am blown away by the achievements of Sargodhians; senior, junior, across wide professions and geographies. Each Sargodhian is a leader: well-educated, accomplished, and successful in every field they enter. Many groups of Pakistani origin have some of these qualities, but none has this combination, along with such a strong connection and soft corner for Pakistan.</p>
+
+                <p>I believe we can translate our individual successes to a collective one, through a well thoughtout organization to have a multiplier effect and inspire the next generation, who are even more talented and civic-minded than we are. If done right, they can take this farther and have a lasting impact in our local communities and in Pakistan. No one can do this alone. We need a team; and we're fortunate to have the Sargodhian family of intelligent, driven, successful brothers who, if channeled, can do wonders.</p>
+
+                <p>I am running for General Secretary as part of a slate that believes in this shared vision. Please vote for us as a slate; not as individuals: <strong>Sir Sarbuland Sadiq (President), Sir Masood Habib Khan (Treasurer), and I as General Secretary.</strong></p>
+
+                <p>We also endorse the candidacy of <strong>Sir Furhad Waquad and Sir Sohail Shafi</strong>, as Directors.</p>
+
+                <p>Thank you for your time and attention.</p>
+
+                <p><strong>Your brother,<br>Nasser</strong></p>
+
+                <button class="see-supporters-btn">See Our Supporters</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Copyright © 2026. All rights reserved.</p>
+    </footer>
+</body>
+</html>

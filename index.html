@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SONA 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c4c6d;
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: white;
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+
+       .logo-icon {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+        .nav-links {
+            display: flex;
+            gap: 0;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            padding: 0 1.5rem;
+            border-right: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-links li:last-child {
+            border-right: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d4a574;
+        }
+
+        /* Hero Section */
+        .hero {
+  position: relative;
+  height: calc(100vh - 80px);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("assets/group 2.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+
+        .hero h1 {
+            font-family: Arial, sans-serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #f5a623;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            line-height: 1.2;
+            letter-spacing: normal;
+        }
+
+        .search-container {
+            margin: 2rem 0;
+            display: none;
+        }
+
+        .search-input {
+            padding: 1rem 1.5rem;
+            width: 400px;
+            max-width: 90%;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-button {
+            background-color: #f5a623;
+            color: #000;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 1rem 0;
+        }
+
+        .cta-button:hover {
+            background-color: #d4a574;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 166, 35, 0.4);
+        }
+
+        .hero h2 {
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            letter-spacing: normal;
+            text-align: center;
+        }
+
+        .progress-indicators {
+            position: absolute;
+            bottom: 2rem;
+            display: none;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        /* Milestones Section */
+        .milestones {
+            position: relative;
+            padding: 4rem 2rem;
+            background-color: #F3DBB1;
+        }
+
+        .milestones-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .milestones-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #d87e28;
+            margin-bottom: 2rem;
+        }
+
+        .milestones-text {
+            color: #1a1a1a;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .milestones-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .milestones-text strong {
+            font-weight: 700;
+        }
+
+        .milestone-intro {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .milestone-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 1.5rem 0;
+        }
+
+        .milestone-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .milestone-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #d87e28;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .learn-more-btn {
+            background-color: #FEA002;
+            color: #000;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 2rem;
+        }
+
+        .learn-more-btn:hover {
+            background-color: #e59002;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(254, 160, 2, 0.3);
+        }
+
+        .stock-image {
+            margin-top: 3rem;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .stock-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Endorsements Section */
+        .endorsements {
+            background-color: #F9F9F9;
+            padding: 4rem 2rem;
+        }
+
+        .endorsements-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .endorsements-image {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .endorsements-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .endorsements-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+        }
+
+        .endorsements-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .view-endorsements-btn {
+            background-color: #FEA002;
+            color: #000;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .view-endorsements-btn:hover {
+            background-color: #e59002;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(254, 160, 2, 0.3);
+        }
+
+        /* Leadership Team Section */
+        .leadership {
+            background-color: #F3DBB1;
+            padding: 4rem 2rem;
+        }
+
+        .leadership-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .leader-card {
+            text-align: center;
+        }
+
+        .leader-image {
+            position: relative;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .leader-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        .view-bio-btn {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #FEA002;
+            color: #000;
+            padding: 0.75rem;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            transform: translateY(100%);
+        }
+
+        .leader-image:hover .view-bio-btn {
+            transform: translateY(0);
+        }
+
+        .view-bio-btn:hover {
+            background-color: #e59002;
+        }
+
+        .leader-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Director Section */
+        .director {
+            background-color: #F3DBB1;
+            padding: 3rem 2rem;
+        }
+
+        .director-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .director-image {
+            width: 60%;
+            max-width: 600px;
+            margin: 0 auto;          /* centers horizontally */
+            }
+
+        .director-image img {
+            width: 100%;
+            height: auto;            /* keeps aspect ratio */
+            display: block;
+            }
+                
+
+        .director-info {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .director-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .director-info h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #88ABA2;
+            padding: 1.5rem 2rem;
+            text-align: left;
+        }
+
+        .footer p {
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #1a1a1a;
+            font-size: 1rem;
+        }
+
+        /* Image Section */
+        .image-section {
+            width: 100%;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+
+            .milestones {
+                padding: 2rem 1rem;
+            }
+
+            .milestones-title {
+                font-size: 1.8rem;
+            }
+
+            .milestones-text {
+                font-size: 1rem;
+            }
+
+            .endorsements-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .endorsements-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .endorsements-text p {
+                font-size: 1rem;
+            }
+
+            .leadership-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .view-bio-btn {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+  <img src="assets/logo.png" alt="SONA Logo" class="logo-icon" />
+  <span>SONA 2026</span>
+</div>
+
+        <ul class="nav-links">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="candidates.html">Candidates</a></li>
+  <li><a href="issues.html">Issues</a></li>
+  <li><a href="contact.html">Contact</a></li>
+</ul>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>RIGHT VISION, RIGHT TEAM, RIGHT CHOICE</h1>
+            
+            <a href="candidates.html" class="cta-link">
+  <button class="cta-button">Meet Candidates</button>
+</a>
+            
+            <h2>SONA 2026 - Together for a Stronger Future</h2>
+        </div>
+
+    </section>
+
+    <!-- Milestones & Deliverables Section -->
+    <section class="milestones">
+        <div class="milestones-content">
+            <h2 class="milestones-title">Milestones & Deliverables</h2>
+            
+            <div class="milestones-text">
+                <p><strong>WHAT</strong> – These are Our Deliverables Our leadership team is committed to delivering tangible results.</p>
+                
+                <p><strong>Inclusivity:</strong> All candidates who did not get elected will be offered Committee Chair positions — because we need ALL hands on deck and cannot waste members with ideas and drive.</p>
+                
+                <p><strong>Values:</strong> Bring back Respect, Courtesy, Civility, Brotherhood, Unity and Pride in our Sargodhian spirit and traditions.</p>
+                
+                <p class="milestone-intro">Here's what we aim to achieve in 2026:</p>
+                
+                <ul class="milestone-list">
+                    <li><strong>January 15, 2026:</strong> First Executive Board Meeting at 1800 hrs</li>
+                    <li><strong>Ongoing:</strong> Weekly Executive Board Meetings and Monthly Full Board Meetings</li>
+                    <li><strong>February 1, 2026:</strong> Complete 501(c)(3) Incorporation</li>
+                    <li><strong>May 1, 2026:</strong> Ratify By-Laws, Constitution, Vision, and Mission Statements</li>
+                    <li><strong>October 1, 2026:</strong> Launch fully integrated membership portal and complete digital operating platform</li>
+                    <li><strong>November 1, 2026:</strong> Announce next elections</li>
+                    <li><strong>December 17–19, 2026:</strong> Conduct elections</li>
+                    <li><strong>December 19, 2026:</strong> Host Reunion Gala</li>
+                </ul>
+                
+                <button class="learn-more-btn">Learn More</button>
+                
+                <div class="stock-image">
+                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&h=400&fit=crop" alt="Mountain Road">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Endorsements Section -->
+    <section class="endorsements">
+        <div class="endorsements-content">
+            <div class="endorsements-image">
+                <img src="assets/endorsement.jpg" alt="Community Leaders">
+            </div>
+            <div class="endorsements-text">
+                <h2>Endorsements</h2>
+                <p>We are proud to have the support of respected community leaders, organizations, and citizens who share our vision for progress. Their endorsements strengthen our commitment to serve with integrity and dedication.</p>
+                <button class="view-endorsements-btn">View Endorsements</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team Section -->
+    <section class="leadership">
+        <div class="leadership-content">
+            <div class="leader-card">
+                <div class="leader-image">
+                    <img src="assets/sarbuland sadiqi 3.jpg" alt="Sarbuland Sadiq"> 
+                    <a href="candidates.html#sarbuland-sadiq" class="view-bio-btn">
+  View Bio
+</a>
+                </div>
+                <h3>President</h3>
+                <h4>Sarbuland Sadiq</h4>
+                <p>22nd / 70th GD(P) Alauddin</p>
+                <p>Serial Entrepreneur</p>
+            </div>
+            
+            <div class="leader-card">
+                <div class="leader-image">
+                    <img src="assets/nasser akhtar.jpg" alt="secretary"> 
+                    <a href="candidates.html#nasser-akhtar" class="view-bio-btn">
+  View Bio
+</a>
+                </div>
+                <h3>Secretary</h3>
+                <h4>M. Nasser Akhtar</h4>
+                <p>83rd GD(P) Alauddin</p>
+                <p>Tech Entrepreneur</p>
+            </div>
+            
+            <div class="leader-card">
+                <div class="leader-image">
+                    <img src="assets/masood h khan.png" alt="Treasurer">
+                    <a href="candidates.html#masood-h-khan" class="view-bio-btn">
+  View Bio
+</a>
+
+                </div>
+                <h3>Treasurer</h3>
+                <h4>Masood H. Khan</h4>
+                <p>22nd / 70th GD(P) Iqbal</p>
+                <p>Banker / Philanthropist</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Director Section -->
+    <section class="director">
+        <div class="director-content">
+            <div class="director-image">
+                <img src="assets/director.jpg" alt="Director">
+            </div>
+            <div class="director-info">
+                <h3>Director</h3>
+                <h4>Furhad Waquad</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Copyright © 2026. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript code can be added here if needed
+    </script>
+</body>
+</html>
